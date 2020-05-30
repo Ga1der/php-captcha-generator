@@ -1,23 +1,25 @@
 <?php
 
 namespace CaptchaGenerator;
+use Exception;
+
 /**
  * Class BaseCaptchaGenerator
  *
  * @package CaptchaGenerator
  *
  * @property int    code_length
- * @property string color_background
- * @property string $color_text
- * @property string color_noise_lines
- * @property string color_noise_dots
- * @property string color_noise_circles
+ * @property string color_background            HexDec value
+ * @property string color_background_secondary  HexDec value
+ * @property string color_text                  HexDec value
+ * @property string color_noise_lines           HexDec value
+ * @property string color_noise_dots            HexDec value
+ * @property string color_noise_circles         HexDec value
  * @property int    count_noise_lines
  * @property int    count_noise_dots
  * @property int    count_noise_circles
  * @property int    height
  * @property int    width
- * @property string color_background_secondary
  * @property string font
  * @property int    font_size
  * @property float  font_size_flex

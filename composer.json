@@ -1,0 +1,16 @@
+{
+  "name": "vendor_name/11",
+  "description": "description",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "_",
+      "email": "email@example.com"
+    }
+  ],
+  "require": {
+    "php": "5.3.*",
+    "ext-gd": "*"
+  }
+}
