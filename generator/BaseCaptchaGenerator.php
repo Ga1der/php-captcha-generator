@@ -1,25 +1,23 @@
 <?php
 
 namespace CaptchaGenerator;
-use Exception;
-
 /**
  * Class BaseCaptchaGenerator
  *
  * @package CaptchaGenerator
  *
  * @property int    code_length
- * @property string color_background            HexDec value
- * @property string color_background_secondary  HexDec value
- * @property string color_text                  HexDec value
- * @property string color_noise_lines           HexDec value
- * @property string color_noise_dots            HexDec value
- * @property string color_noise_circles         HexDec value
+ * @property string color_background
+ * @property string $color_text
+ * @property string color_noise_lines
+ * @property string color_noise_dots
+ * @property string color_noise_circles
  * @property int    count_noise_lines
  * @property int    count_noise_dots
  * @property int    count_noise_circles
  * @property int    height
  * @property int    width
+ * @property string color_background_secondary
  * @property string font
  * @property int    font_size
  * @property float  font_size_flex
@@ -30,6 +28,23 @@ abstract class BaseCaptchaGenerator
     use Calc;
     protected $im;
     protected $text;
+
+    protected $code_length;
+    protected $color_background;
+    protected $color_text;
+    protected $color_noise_lines;
+    protected $color_noise_dots;
+    protected $color_noise_circles;
+    protected $count_noise_lines;
+    protected $count_noise_dots;
+    protected $count_noise_circles;
+    protected $height;
+    protected $width;
+    protected $color_background_secondary;
+    protected $font;
+    protected $font_size;
+    protected $font_size_flex;
+    protected $text_angle;
 
     /**
      * CaptchaGenerator constructor.
@@ -66,6 +81,16 @@ abstract class BaseCaptchaGenerator
 
         $this->text = $text;
         $this->im   = $im;
+    }
+
+    /**
+     * @param $name
+     *
+     * @return mixed
+     */
+    public function __get($name)
+    {
+        return $this->$name;
     }
 
     /**
