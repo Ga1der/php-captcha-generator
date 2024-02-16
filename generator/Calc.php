@@ -1,4 +1,5 @@
 <?php
+
 namespace CaptchaGenerator;
 
 /**
@@ -198,18 +199,17 @@ trait Calc
      */
     private static function calcCircleWobbleSegments($x, $y, $radius, $line_width, $wobble_edges, $wobble_ratio)
     {
-        static $radians = 360 / 180 * M_PI;
+        $radians                = 360 / 180 * M_PI;
         $radius                 = abs($radius ?: 1);
         $radian_fragment_length = (1 / ($radians * $radius));
 
-        /** @var array $segments */
         $segments = [];
         for ($section_radian = 0; $section_radian < $radians; $section_radian += $radian_fragment_length) {
             $_a                 = 0.5 + (0.5 * sin($section_radian * $wobble_edges));
             $radius_coefficient = (1 - $wobble_ratio * $_a);
             $segment_radius     = ($radius * $radius_coefficient);
-            $segment_top_left_x = ($x + cos($section_radian) * $segment_radius);
-            $segment_top_left_y = ($y + sin($section_radian) * $segment_radius);
+            $segment_top_left_x = ceil($x + cos($section_radian) * $segment_radius);
+            $segment_top_left_y = ceil($y + sin($section_radian) * $segment_radius);
 
             $segments[] = [
                 $segment_top_left_x + 0,
@@ -237,7 +237,7 @@ trait Calc
         $x_min     = $image_width / (1 + $count) * (1 + $i);
         $x_shift   = $image_width / (1 + $count) + (0.5 * $port_size);
         $x         = $x_min + $x_shift;
-        $y         = mt_rand($image_height * 0.1, $image_height * 0.9);
+        $y         = mt_rand(ceil($image_height * 0.1), ceil($image_height * 0.9));
 
         return [$x, $y, $port_size];
     }
